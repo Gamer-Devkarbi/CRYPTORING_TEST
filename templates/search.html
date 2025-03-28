@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Search Users</title>
+</head>
+<body>
+  <h1>Search for Users</h1>
+  <form method="get">
+    <input type="text" name="q" placeholder="Enter phone number" value="{{ query }}" />
+    <button type="submit">Search</button>
+  </form>
+  <h2>Results:</h2>
+  <ul>
+    {% for user in results %}
+      <li>{{ user.phone }} - <a href="{{ url_for('chat', phone=user.phone) }}">Chat</a></li>
+    {% else %}
+      <li>No users found.</li>
+    {% endfor %}
+  </ul>
+  <p><a href="{{ url_for('logout') }}">Logout</a></p>
+</body>
+</html>
