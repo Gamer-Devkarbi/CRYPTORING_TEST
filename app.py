@@ -166,6 +166,11 @@ def handle_message(data):
 # Note: Do not call socketio.run() here.
 # Production deployment is handled by Gunicorn with Eventlet.
 # ------------------------------
+
+#THESE 2 LINES ARE ONLY MEANT TO BE USED IN PRODUCTION
+with app.app_context():
+    db.create_all()
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
