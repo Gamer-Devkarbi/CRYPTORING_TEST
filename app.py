@@ -29,7 +29,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = "login"
-socketio = SocketIO(app)
+socketio = SocketIO(app, cors_allowed_origins=["https://cryptoringtest.duckdns.org"])
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
