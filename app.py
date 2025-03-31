@@ -29,7 +29,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = "login"
-socketio = SocketIO(app)
+socketio = SocketIO(app, cors_allowed_origins=["https://cryptoringtest.duckdns.org"])
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -166,6 +166,11 @@ def handle_message(data):
 # Note: Do not call socketio.run() here.
 # Production deployment is handled by Gunicorn with Eventlet.
 # ------------------------------
+
+#THESE 2 LINES ARE ONLY MEANT TO BE USED IN PRODUCTION
+with app.app_context():
+    db.create_all()
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
