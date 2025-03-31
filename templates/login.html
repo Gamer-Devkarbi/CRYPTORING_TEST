@@ -3,25 +3,114 @@
 <head>
   <meta charset="UTF-8" />
   <title>Login</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-image: url("https://wallpaperbat.com/img/1512331-white-hexagon-geometric-shapes-hd-white-aesthetic-wallpaper.jpg"); /* Replace with your image URL */
+      background-size: cover; /* Cover the entire background */
+      background-repeat: no-repeat; /* Prevent image repetition */
+      overflow: hidden;
+    }
+
+    .login-container {
+      width: 400px;
+      padding: 60px;
+      border-radius: 30px;
+      box-shadow: 0 15px 30px rgba(94, 7, 176, 0.9); 
+      text-align: center;
+      background-color: black;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      color: white;
+      margin-bottom: 30px;
+      font-size: 28px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: white;
+      text-align: left;
+      font-size: 18px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: calc(100% - 26px);
+      padding: 14px;
+      margin-bottom: 25px;
+      border: 1px solid #555;
+      border-radius: 6px;
+      font-size: 16px;
+      background-color: #333;
+      color: white;
+    }
+
+    button[type="submit"] {
+      background-color: white;
+      color: black;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #eee;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-bottom: 15px;
+    }
+
+    li {
+      color: red;
+      font-size: 16px;
+    }
+
+    a {
+      color: white;
+      font-size: 16px;
+    }
+
+    p {
+      font-size: 16px;
+      color: white;
+    }
+  </style>
 </head>
 <body>
-  <h1>Login</h1>
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <ul>
-        {% for message in messages %}
-          <li style="color:red;">{{ message }}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-  {% endwith %}
-  <form method="post">
-    <label for="phone">Phone Number:</label>
-    <input type="text" name="phone" required /><br /><br />
-    <label for="password">Password:</label>
-    <input type="password" name="password" required /><br /><br />
-    <button type="submit">Login</button>
-  </form>
-  <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a>.</p>
+  <div class="login-container">
+    <h1>USER LOGIN</h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <form method="post">
+      <label for="phone">Phone Number:</label>
+      <input type="text" name="phone" required /><br />
+      <label for="password">Password:</label>
+      <input type="password" name="password" required /><br />
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a>.</p>
+  </div>
 </body>
 </html>

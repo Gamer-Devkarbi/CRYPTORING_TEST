@@ -1,27 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Register</title>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+            background-image: url('https://wallpaperbat.com/img/1512331-white-hexagon-geometric-shapes-hd-white-aesthetic-wallpaper.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .register-container {
+            display: flex;
+            width: 800px;
+            background: rgb(0, 0, 0); /* Changed to black */
+            border-radius: 25px;
+            box-shadow: 0 15px 30px rgba(94, 7, 176, 0.9);
+            overflow: hidden;
+        }
+
+        .form-section, .welcome-section {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .welcome-section {
+            background: linear-gradient(135deg, hsla(0, 0.00%, 100.00%, 0.97), rgb(255, 255, 255)); /* Changed to white */
+            color: black; /* Changed to black */
+            text-align: left;
+        }
+
+        h1 {
+            color: white; /* Changed to white */
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: white; /* Changed to white */
+        }
+
+        input[type="text"], input[type="password"], input[type="email"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #555; /* Darker border for contrast */
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #333; /* Darker background for input */
+            color: white; /* White text for input */
+        }
+
+        button[type="submit"] {
+            background-color: white; /* Changed to white */
+            color: black; /* Changed to black */
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #eee; /* Lighter hover color for contrast */
+        }
+
+        a {
+            color: #81d4fa; /* Changed to a lighter blue for contrast */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .error-messages {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 15px;
+        }
+
+        .error-messages li {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
-  <h1>Register</h1>
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <ul>
-        {% for message in messages %}
-          <li style="color:red;">{{ message }}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-  {% endwith %}
-  <form method="post">
-    <label for="phone">Phone Number:</label>
-    <input type="text" name="phone" required /><br /><br />
-    <label for="password">Password:</label>
-    <input type="password" name="password" required /><br /><br />
-    <button type="submit">Register</button>
-  </form>
-  <p>Already registered? <a href="{{ url_for('login') }}">Login here</a>.</p>
+    <div class="register-container">
+        <div class="form-section">
+            <h1>Register</h1>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="error-messages">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            <form method="post">
+                <label for="email">Email:</label>
+                <input type="email" name="email" required /><br />
+                <label for="phone">Phone Number:</label>
+                <input type="text" name="phone" required /><br />
+                <label for="password">Password:</label>
+                <input type="password" name="password" required /><br />
+                <button type="submit">Create account</button>
+            </form>
+            <p style="color: white;">Already registered? <a href="{{ url_for('login') }}">Login here</a>.</p>
+        </div>
+        <div class="welcome-section">
+            <h2>Welcome to <br>CRYPTO-RING !</h2>
+            <p>Start your journey with us and discover a new way to connect with others, all while ensuring your privacy is protected</p>
+        </div>
+    </div>
 </body>
 </html>

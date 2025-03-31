@@ -2,13 +2,226 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Welcome to ChatApp</title>
+  <title>CRYPTORING</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-image: url('https://wallpaperbat.com/img/1512331-white-hexagon-geometric-shapes-hd-white-aesthetic-wallpaper.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: #000;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 30px;
+      font-weight: bold;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    .logo::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background-color: #000;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #000;
+      font-size: 16px;
+    }
+
+    .nav-links .login-btn {
+      background-color: #000;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+
+    .main-content {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 20px 40px;
+      margin-top: 50px;
+    }
+
+    .main-content h1 {
+      font-size: 85px;
+      line-height: 1.2;
+      max-width: 600px;
+      margin-bottom: 28px;
+    }
+
+    .main-content h1 span {
+      white-space: nowrap;
+    }
+
+    .main-content .cta {
+      margin-top: 0;
+    }
+
+    .main-content .cta a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 16px;
+      margin-right: 20px;
+    }
+
+    .main-content .login-btn {
+      background-color: #000;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      box-shadow: 2px 2px 5px rgba(99, 8, 202, 0.9);
+    }
+
+    .main-content .cta .demo {
+      text-decoration: none;
+      color: #000;
+      font-size: 16px;
+      margin-right: 20px;
+    }
+    /* Increase font size of main content text */
+    .main-content h1 {
+      font-size: 80px; /* Increased from 85px */
+    }
+
+    .main-content .cta a, .main-content .login-btn {
+      font-size: 18px; /* Increased from 16px */
+    }
+
+    /* Add text shadow */
+    .main-content h1, .main-content .cta a, .main-content .login-btn {
+      text-shadow: 2px 2px 4px rgba(11, 60, 210, 0.5); /* Adjust the values for shadow offset and color as needed */
+    }
+
+    /* Footer styles - Changed to Black and added padding-top */
+    footer {
+      background-color: #000; /* Changed to Black */
+      color: #fff;
+      padding: 40px;
+      padding-top: 80px; /* Added padding-top */
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: 219px;
+    }
+
+    footer .footer-section {
+      flex: 1;
+      margin-right: 20px;
+    }
+
+    footer h3 {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+
+    footer p, footer a {
+      color: #aaa;
+      line-height: 1.6;
+      text-decoration: none;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    footer ul li {
+      margin-bottom: 10px;
+    }
+
+    footer ul li a {
+      color: #aaa;
+      text-decoration: none;
+    }
+
+    footer ul li a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding: 20px 0;
+      background-color: #000; /* Changed to Black */
+      color: #aaa;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to ChatApp</h1>
-  <p>
-    <a href="{{ url_for('register') }}">Register</a> | 
-    <a href="{{ url_for('login') }}">Login</a>
-  </p>
+  <nav>
+    <div class="logo">CRYPTO-RING</div>
+    <div class="nav-links">
+      <a href="{{ url_for('register') }}">Register</a>
+      <a href="{{ url_for('login') }}" class="login-btn">Login</a>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    <h1><span>Unbreakable Privacy:</span><br>Message Without Worry</h1>
+    <div class="cta">
+      <a href="{{ url_for('register') }}" class="demo">Get a demo</a>
+      <a href="{{ url_for('login') }}" class="login-btn">Login</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-section">
+      <h3>About Us</h3>
+      <p>CRYPTO-RING provides a secure and private messaging platform. We prioritize your privacy and ensure your conversations remain confidential.</p>
+    </div>
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="{{ url_for('register') }}">Register</a></li>
+        <li><a href="{{ url_for('login') }}">Login</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Contact Us</h3>
+      <p>Email: contact@cryptoring.com</p>
+      <p>Phone: +1 (555) 123-4567</p>
+    </div>
+  </footer>
+
+  <div class="footer-bottom">
+    <p>&copy; 2024 CRYPTO-RING. All rights reserved.</p>
+  </div>
 </body>
 </html>
